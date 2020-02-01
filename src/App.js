@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import NavBar from './components/NavBar'
-import TableList from './components/TableList'
-import Table from './components/Table'
+import Routes from './Routes'
 
 
 
@@ -10,8 +9,7 @@ class App extends Component {
     return (
       <div>
         <NavBar />
-          <TableList />
-        <Table />
+        <Routes />
       </div>
     )
   }

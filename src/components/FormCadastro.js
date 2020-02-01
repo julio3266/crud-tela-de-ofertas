@@ -5,58 +5,145 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
   root: {
     '& .MuiTextField-root': {
-      margin: theme.spacing(1),
+      margin: theme.spacing(4),
       width: 200,
     },
   },
 }));
 
-export default function ValidationTextFields() {
+export default function FormPropsTextFields() {
   const classes = useStyles();
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
       <div>
-        <TextField error id="standard-error" label="Error" defaultValue="Hello World" />
+        <TextField required id="standard-required" label="Required" defaultValue="Hello World" />
+        <TextField disabled id="standard-disabled" label="Disabled" defaultValue="Hello World" />
         <TextField
-          error
-          id="standard-error-helper-text"
-          label="Error"
+          id="standard-password-input"
+          label="Password"
+          type="password"
+          autoComplete="current-password"
+        />
+        <TextField
+          id="standard-read-only-input"
+          label="Read Only"
           defaultValue="Hello World"
-          helperText="Incorrect entry."
+          InputProps={{
+            readOnly: true,
+          }}
+        />
+        <TextField
+          id="standard-number"
+          label="Number"
+          type="number"
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+        <TextField id="standard-search" label="Search field" type="search" />
+        <TextField
+          id="standard-helperText"
+          label="Helper text"
+          defaultValue="Default Value"
+          helperText="Some important text"
         />
       </div>
       <div>
         <TextField
-          error
-          id="filled-error"
-          label="Error"
+          required
+          id="filled-required"
+          label="Required"
           defaultValue="Hello World"
           variant="filled"
         />
         <TextField
-          error
-          id="filled-error-helper-text"
-          label="Error"
+          disabled
+          id="filled-disabled"
+          label="Disabled"
           defaultValue="Hello World"
-          helperText="Incorrect entry."
+          variant="filled"
+        />
+        <TextField
+          id="filled-password-input"
+          label="Password"
+          type="password"
+          autoComplete="current-password"
+          variant="filled"
+        />
+        <TextField
+          id="filled-read-only-input"
+          label="Read Only"
+          defaultValue="Hello World"
+          InputProps={{
+            readOnly: true,
+          }}
+          variant="filled"
+        />
+        <TextField
+          id="filled-number"
+          label="Number"
+          type="number"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          variant="filled"
+        />
+        <TextField id="filled-search" label="Search field" type="search" variant="filled" />
+        <TextField
+          id="filled-helperText"
+          label="Helper text"
+          defaultValue="Default Value"
+          helperText="Some important text"
           variant="filled"
         />
       </div>
       <div>
         <TextField
-          error
-          id="outlined-error"
-          label="Error"
+          required
+          id="outlined-required"
+          label="Required"
           defaultValue="Hello World"
           variant="outlined"
         />
         <TextField
-          error
-          id="outlined-error-helper-text"
-          label="Error"
+          disabled
+          id="outlined-disabled"
+          label="Disabled"
           defaultValue="Hello World"
-          helperText="Incorrect entry."
+          variant="outlined"
+        />
+        <TextField
+          id="outlined-password-input"
+          label="Password"
+          type="password"
+          autoComplete="current-password"
+          variant="outlined"
+        />
+        <TextField
+          id="outlined-read-only-input"
+          label="Read Only"
+          defaultValue="Hello World"
+          InputProps={{
+            readOnly: true,
+          }}
+          variant="outlined"
+        />
+        <TextField
+          id="outlined-number"
+          label="Number"
+          type="number"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          variant="outlined"
+        />
+        <TextField id="outlined-search" label="Search field" type="search" variant="outlined" />
+        <TextField
+          id="outlined-helperText"
+          label="Helper text"
+          defaultValue="Default Value"
+          helperText="Some important text"
           variant="outlined"
         />
       </div>

@@ -25,7 +25,7 @@ const NavBar = () => {
                    
                    
                         <Button   className="btn-admin" variant="contained" color="primary">
-                            <Link   to="/Admin"  href="/Admin"    color="inherit">
+                            <Link   to="home"  href="/Admin"    color="inherit">
                                  Administração
                             </Link>
                             
