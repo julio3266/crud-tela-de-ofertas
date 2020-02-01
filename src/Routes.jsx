@@ -1,15 +1,14 @@
 import React from 'react'
-import {Router, Route, Redirect, hashHistory} from 'react-router'
-import NavBar from './components/NavBar'
-import TableList from './components/TableList'
-import Table from './components/Table'
-import { Link } from '@material-ui/core'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import FormCadastro from './components/FormCadastro'
 
-export default props => (
-    <Router history={hashHistory}>
-        <Route path='/form-cadastro' component={Link} />
-        <Route path='/Home' component={Adm} />
-        <Redirect from='*' to='/Home' />
-    </Router>
+const Routes = () => (
+    <BrowserRouter>
+        <Switch>
+            <Route exact path="/FormCadastro" component={FormCadastro}  />
+            <Route exact path="/Admin"  />
+        </Switch>
+    </BrowserRouter>
 )
 
+export default Routes;

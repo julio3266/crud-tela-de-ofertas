@@ -4,6 +4,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import Link from '@material-ui/core/Link';
+
+
 
 
 
@@ -21,8 +24,11 @@ const NavBar = () => {
                         </Typography>
                    
                    
-                        <Button  to="#/Home" className="btn-admin" variant="contained" color="primary">
-                            Administração
+                        <Button   className="btn-admin" variant="contained" color="primary">
+                            <Link   to="/Admin"  href="/Admin"    color="inherit">
+                                 Administração
+                            </Link>
+                            
                          </Button>
            
                         <Button  className="btn-ofer" variant="contained" color="primary">
@@ -32,6 +38,6 @@ const NavBar = () => {
             </Toolbar>
         </AppBar>
         </div>
-    )
+    );
 }
 export default NavBar;
