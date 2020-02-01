@@ -7,30 +7,17 @@ import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 
 
-
-
-
-
 const NavBar = () => {
     return(
         <div>
         <AppBar position="static">
-            <Toolbar>
-                
+            <Toolbar>               
                    <Grid container>
                        
                         <Typography variant="h6" color="inherit">
                             toolbar
                         </Typography>
-                   
-                   
-                        <Button   className="btn-admin" variant="contained" color="primary">
-                            <Link   to="home"  href="/Admin"    color="inherit">
-                                 Administração
-                            </Link>
-                            
-                         </Button>
-           
+                                         
                         <Button  className="btn-ofer" variant="contained" color="primary">
                             Ofertas
                          </Button>
