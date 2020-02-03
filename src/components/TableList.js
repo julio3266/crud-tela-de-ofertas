@@ -22,9 +22,9 @@ export default function CenteredGrid() {
 
   return (
     <div style={{ padding: 20 }} className={classes.root}>
-      <Grid container spacing={3}>   
+      <Grid container spacing={4}>   
         <Grid item xs={6}>       
-          <TextField id="input-search" label="Buscar" variant="outlined" />
+          <TextField  id="input-search" label="Buscar" variant="outlined" />
         </Grid>
         <Grid item xs={6}>
           <Button   size="large" className="btn-form" variant="contained" color="primary">  
