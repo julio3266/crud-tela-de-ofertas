@@ -3,33 +3,39 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import {Link} from 'react-router-dom';
+import Grid from '@material-ui/core/Grid';
 
 
 const useStyles = makeStyles(theme => ({
   root: {
-    '& > *': {
-      margin: theme.spacing(3),
-      width: 250,
-      marginTop: theme.spacing.unit * 3
-      
-    },   
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
   },
 }));
 
-export default function BasicTextFields() {
+export default function CenteredGrid() {
   const classes = useStyles();
+
   return (
-    <div>
-      <form className={classes.root} noValidate autoComplete="off">
-        <TextField id="input-search" label="Buscar" variant="outlined" />
-         
+    <div style={{ padding: 20 }} className={classes.root}>
+      <Grid container spacing={3}>   
+        <Grid item xs={6}>       
+          <TextField id="input-search" label="Buscar" variant="outlined" />
+        </Grid>
+        <Grid item xs={6}>
           <Button   size="large" className="btn-form" variant="contained" color="primary">  
             <Link to="cadastro" style={{color: "inherit" }}>
               Adicionar
             </Link>
-        </Button>
-      </form>
-    </div>     
+          </Button>
+        </Grid>    
+      </Grid>
+    </div>
   );
 }
 
+         
