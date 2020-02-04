@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
@@ -7,6 +7,9 @@ import TextField from '@material-ui/core/TextField';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
+import DeleteIcon from '@material-ui/icons/Delete';
+
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -25,30 +28,57 @@ const useStyles = makeStyles(theme => ({
   divider: {
     margin: theme.spacing(2, 0),
   },
+   button: {
+    margin: theme.spacing(1),
+  },
 }));
 
 export default function CSSGrid() {
   const classes = useStyles();
 
+  const [Marca, setMarca] = useState('')
+  const [Modelo, setModelo] = useState('')
+  const [ Date, setDate ] = useState('')
+  const submit = (event) => {
+    event.preventDefault();
+    console.log(`Marca: Chev - ${Marca}, Modelo - ${Modelo}` )
+  }
   return (
     <div>
       <Typography align="center" color="primary" variant="h2" gutterBottom>Cadastro</Typography>
       <Divider className={classes.divider} />
       <Grid container spacing={1}>
         <Grid item xs={4}>
-          <TextField id="outlined-basic" fullWidth label="Marca" variant="outlined" />
+          <TextField 
+          id="outlined-basic" 
+          fullWidth label="Marca" 
+          variant="outlined" 
+          value={Marca}
+            onChange={ e => setMarca(e.target.value)}
+          />
         </Grid>
         <Grid item xs={4}>
-         <TextField id="outlined-basic" fullWidth label="Modelo" variant="outlined" />
+         <TextField id="outlined-basic" 
+          fullWidth label="Modelo"
+          variant="outlined" 
+          value={Modelo}
+          onChange={e => setModelo(e.target.value)}      
+          />
         </Grid>
         <Grid item xs={4}>
-          <TextField id="outlined-basic" fullWidth label="Ano" variant="outlined" />
+          <TextField id="outlined-basic"
+           fullWidth label="Ano"
+            variant="outlined" />
         </Grid>
         <Grid item xs={4}>
-          <TextField id="outlined-basic" fullWidth label="Preço" variant="outlined" />
+          <TextField id="outlined-basic" 
+          fullWidth label="Preço"
+           variant="outlined" />
         </Grid>
         <Grid item xs={4}>
-         <TextField id="outlined-basic" fullWidth label="Cor" variant="outlined" />
+         <TextField id="outlined-basic" 
+         fullWidth label="Cor" 
+         variant="outlined" />
         </Grid>
         <Grid  item xs={4} >
           <TextField  id="outlined-basic" fullWidth label="Quilometragem" variant="outlined" />
@@ -60,7 +90,12 @@ export default function CSSGrid() {
           <TextField id="outlined-basic" fullWidth label="Cidade" variant="outlined" />
         </Grid>
         <Grid item xs={4}>
-          <TextField id="outlined-basic" fullWidth label="Cidade" variant="outlined" />
+          <TextField id="outlined-basic" 
+            fullWidth label="Data de Criação" 
+            variant="outlined"
+            value={Date}
+            onChange={e => setDate(e.target.value)}
+            />
         </Grid>
         <Divider className={classes.divider} />
         <Grid item xs={7}>
@@ -72,10 +107,12 @@ export default function CSSGrid() {
             >
               Upload
             </Button>
-        </Grid>
+            
+            
+         </Grid>
        
       </Grid>
-        <Divider className={classes.divider} />
+      <Divider className={classes.divider} />
      
       <div className={classes.container}>
         <div style={{ gridColumnEnd: 'span 3' }}>
@@ -85,10 +122,22 @@ export default function CSSGrid() {
             size="large"
             className={classes.button}
             startIcon={<SaveIcon />}
+            onClick={submit}
             >
             Cadastrar
           </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            className={classes.button}
+            startIcon={<DeleteIcon />}
+            >
+            Cancelar
+          </Button>
+        
         </div>
+
       </div>
     </div>
   );
