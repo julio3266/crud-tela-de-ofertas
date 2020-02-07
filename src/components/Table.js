@@ -14,6 +14,14 @@ export class consultaProdutos extends React.Component {
     produtos : []
   }
 
+  constructor() {
+    super()
+    this.product = new metodosTabela();
+  }
+  componentDidMount() {
+    const produtos = this.product.getProdutos();
+    this.setState({ produtos })
+  }
   render(){
     return (
       <TableContainer component={Paper}>
