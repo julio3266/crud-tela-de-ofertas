@@ -1,92 +1,74 @@
-import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react';
 import { Typography } from '@material-ui/core';
-import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
 import SaveIcon from '@material-ui/icons/Save';
-import DeleteIcon from '@material-ui/icons/Delete';
-import {useHistory} from 'react-router-dom'
+import '../App.css'
+import metodosTabela from '../app/metodosTabela'
 
-
-
-
-const useStyles = makeStyles(theme => ({
-  container: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(12, 1fr)',
-    gridGap: theme.spacing(3),
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-    whiteSpace: 'nowrap',
-    marginBottom: theme.spacing(1),
-  },
-  divider: {
-    margin: theme.spacing(2, 0),
-  },
-   button: {
-    margin: theme.spacing(1),
-  },
-}));
-
-export default function CSSGrid() {
-  const classes = useStyles();
-  const [Marca, setMarca] = useState('')
-  const [Modelo, setModelo] = useState('')
-  const [ Date, setDate ] = useState('')
-  const [ Ano, setAno] = useState('')
-  const [ Preço, setPreco] = useState('')
-  const submit = (event) => {
-    event.preventDefault();
-    console.log(`Marca: Chev - ${Marca}, Modelo - ${Modelo},  Data de Criação - ${Date}, Ano - ${Ano}, Preço - ${Preço}` )
-  }
-  const history = useHistory();
-  function goBackHome() {
-    history.goBack();
+const estadoInicial = {
+    marca: '',
+    modelo: '',
+    data: ''
+}
+class FormCadastro extends React.Component {     
+  state = estadoInicial;
+  constructor() {
+    super()
+    this.products = new metodosTabela();
   }
 
+  onChange = (event) => {
+   const valor = event.target.value
+   const nomeDoCampo = event.target.name
+     this.setState({ [nomeDoCampo]: valor })
+  }
+  onSubmit = (event) => {
+    const produto = {
+      marca: this.state.marca,
+      modelo: this.state.modelo,
+      data: this.state.data
+    }
+    this.products.salvar(produto)
+    console.log('save of sucess!')
+  }
+ 
+  render() {
   return (
-    <div>
-       
-      <Typography align="center" color="primary" variant="h2" gutterBottom>Cadastro</Typography>
-      <Divider className={classes.divider} />
-      <Grid container spacing={1}>
+    <div>  
+      <Typography align="center" color="primary" variant="h3" gutterBottom>Cadastro</Typography>
+      <Grid className="FormCadastro" container spacing={1}>
         <Grid item xs={4}>
           <TextField 
           id="outlined-basic" 
           fullWidth label="Marca" 
           variant="outlined" 
-          value={Marca}
-            onChange={ e => setMarca(e.target.value)}
+          onChange={this.onChange}
+          name="marca"
+          value={this.state.marca}
           />
         </Grid>
         <Grid item xs={4}>
          <TextField id="outlined-basic" 
           fullWidth label="Modelo"
           variant="outlined" 
-          value={Modelo}
-          onChange={e => setModelo(e.target.value)}      
+          onChange={this.onChange}
+          name="modelo"
+          value={this.state.modelo}    
           />
         </Grid>
         <Grid item xs={4}>
           <TextField id="outlined-basic"
             fullWidth label="Ano"
-            variant="outlined" 
-            value={Ano}
-            onChange={e => setAno(e.target.value)}
+            variant="outlined"           
             />
         </Grid>
         <Grid item xs={4}>
           <TextField id="outlined-basic" 
             fullWidth label="Preço"
-            variant="outlined" 
-            value={Preço}
-            onChange={e => setPreco(e.target.value)}
+            variant="outlined"    
            />
         </Grid>
         <Grid item xs={4}>
@@ -94,8 +76,10 @@ export default function CSSGrid() {
          fullWidth label="Cor" 
          variant="outlined" />
         </Grid>
-        <Grid  item xs={4} >
-          <TextField  id="outlined-basic" fullWidth label="Quilometragem" variant="outlined" />
+        <Grid  item xs={4}>
+          <TextField  id="outlined-basic" 
+          fullWidth label="Quilometragem"
+           variant="outlined" />
         </Grid>
         <Grid item xs={4}>
           <TextField id="outlined-basic" fullWidth label="Placa" variant="outlined" />
@@ -107,53 +91,26 @@ export default function CSSGrid() {
           <TextField id="outlined-basic" 
             fullWidth label="Data de Criação" 
             variant="outlined"
-            value={Date}
-            onChange={e => setDate(e.target.value)}
+            onChange={this.onChange}
+            name="data"
+            value={this.state.datecreate}
             />
         </Grid>
-        <Divider className={classes.divider} />
-        <Grid item xs={7}>
-              <Button
-              variant="contained"
-              color="default"
-              className={classes.button}
-              startIcon={<CloudUploadIcon />}
-            >
-              Upload
-            </Button>
-            
-            
-         </Grid>
-       
-      </Grid>
-      <Divider className={classes.divider} />
-     
-      <div className={classes.container}>
-        <div style={{ gridColumnEnd: 'span 3' }}>
-            <Button
+        <Grid item xs={1}>
+           <Button
+           className="btn-cadastro"
             variant="contained"
+            startIcon={<SaveIcon/>}
             color="primary"
-            size="large"
-            className={classes.button}
-            startIcon={<SaveIcon />}
-            onClick={submit}
+            size="large" 
+            onClick={this.onSubmit}
             >
             Cadastrar
           </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            size="large"
-            className={classes.button}
-            startIcon={<DeleteIcon />}
-            onClick={goBackHome}
-            >
-            Cancelar
-          </Button>
-        
-        </div>
-
-      </div>
+          </Grid>
+      </Grid>      
     </div>
   );
+  } 
 }
+export default FormCadastro
