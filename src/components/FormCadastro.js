@@ -3,10 +3,12 @@ import { Typography } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
 import SaveIcon from '@material-ui/icons/Save';
+import DeleteIcon from '@material-ui/icons/Delete'
 import '../App.css'
 import metodosTabela from '../app/metodosTabela'
+import {Link} from 'react-router-dom';
+
 
 const estadoInicial = {
     marca: '',
@@ -39,7 +41,7 @@ class FormCadastro extends React.Component {
   return (
     <div>  
       <Typography align="center" color="primary" variant="h3" gutterBottom>Cadastro</Typography>
-      <Grid className="FormCadastro" container spacing={1}>
+      <Grid className="FormCadastro" container spacing={2}>
         <Grid item xs={4}>
           <TextField 
           id="outlined-basic" 
@@ -96,18 +98,36 @@ class FormCadastro extends React.Component {
             value={this.state.datecreate}
             />
         </Grid>
-        <Grid item xs={1}>
-           <Button
-           className="btn-cadastro"
-            variant="contained"
-            startIcon={<SaveIcon/>}
-            color="primary"
-            size="large" 
-            onClick={this.onSubmit}
-            >
-            Cadastrar
-          </Button>
-          </Grid>
+        <div>
+          <Grid item xs={1}>
+            <Button
+              className="btn-cadastro"
+                variant="contained"
+                startIcon={<SaveIcon/>}
+                color="primary"
+                size="large" 
+                onClick={this.onSubmit}
+                >
+                Cadastrar
+              </Button>      
+            </Grid>
+          </div>
+          <div>
+            <Grid item lg={1} >
+            <Button  
+              className="btn-cadastro"
+                variant="contained"
+                startIcon={<DeleteIcon/>}
+                color="primary"
+                size="large"   
+                
+                >
+                <Link to="/"  style={{color: "inherit" }}>
+                    Cancelar
+                </Link>
+              </Button>      
+            </Grid>
+          </div>
       </Grid>      
     </div>
   );
