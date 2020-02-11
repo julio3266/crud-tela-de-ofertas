@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
-import FormCadastro from '../components/FormCadastro'
+import CadastroForm from '../components/CadastroForm'
 
 class Cadastro extends Component {
-    render() {
-        return (
+    render(){
+        return(
             <>
-                <FormCadastro />
+                <CadastroForm />
             </>
         )
     }
