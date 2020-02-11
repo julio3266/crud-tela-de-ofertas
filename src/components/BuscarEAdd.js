@@ -15,7 +15,7 @@ function BuscarEAdd() {
         return(
            <div>
                <Paper elevation={5}  >
-                    <Grid style={style} container spacing={1} >    
+                    <Grid style={style} container  >    
                         <Grid item={4}>
                            <Button variant="contained" syze="large" color="primary" style={style}>
                                 <Link to="Cadastro" style={{color: "inherit", textDecoration: 'none' }}>
