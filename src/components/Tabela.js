@@ -18,7 +18,7 @@ function Tabela(key, marca, modelo, data) {
     useEffect(()=>{
         firebase.firestore().collection('ofertas').get().then(async (resultado) => {
             await resultado.docs.forEach(doc => {
-                if(doc.data().modelo.indesOf(buscar) >= 0)
+                if(doc.data().modelo.indexOf(buscar) >= 0)
                 {
                 listaofertas.push({
                     id: doc.id,
