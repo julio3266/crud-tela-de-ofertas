@@ -19,6 +19,7 @@ function Tabela(key, marca, modelo, data) {
     const [ofertas, setOfertas] = useState([]);
     const [excluir, setExcluir] = useState(0);
     const listaofertas = []
+   
     function remover(){
         firebase.firestore().collection('ofertas').delete().then(() =>{
             setExcluir(1);
