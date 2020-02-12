@@ -12,12 +12,18 @@ import TextField from '@material-ui/core/TextField'
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
+import { Redirect } from 'react-router-dom';
 
 function Tabela(key, marca, modelo, data) {
     const [buscar, setBuscar] = useState('');
     const [ofertas, setOfertas] = useState([]);
+    const [excluir, setExcluir] = useState(0);
     const listaofertas = []
-    
+    function remover(){
+        firebase.firestore().collection('ofertas').delete().then(() =>{
+            setExcluir(1);
+        })
+    }
     useEffect(()=>{
         firebase.firestore().collection('ofertas').get().then(async (resultado) => {
             await resultado.docs.forEach(doc => {
@@ -34,7 +40,9 @@ function Tabela(key, marca, modelo, data) {
     })
 
     return(
+        
     <Paper elevation={2} style={{ marginTop: 20 }}>
+        {excluir ? <Redirect to='/'/> : null}
         <Grid contianer>
             <Grid md item={8}>
                 <form style={{marginTop: 30}} noValidate autoComplete="off">
@@ -60,13 +68,13 @@ function Tabela(key, marca, modelo, data) {
                                         <TableCell  size="medium" align="center" key={item.modelo}>{item.modelo}</TableCell>
                                         <TableCell  size="medium" align="center" key={item.data}>{item.data}</TableCell>
                                         <TableCell  size="medium" align="center" >
-                                        <IconButton aria-label="delete" >
-                                             <DeleteIcon fontSize="small" />
-                                        </IconButton>
-                                        <IconButton>
-                                            <EditIcon fontSize="small" />
-                                        </IconButton>
-
+                                            <IconButton onClick={remover}
+                                             aria-label="delete" >
+                                                <DeleteIcon fontSize="small" />
+                                            </IconButton>
+                                            <IconButton>
+                                                <EditIcon fontSize="small" />
+                                            </IconButton>
                                         </TableCell>
                                     </TableRow>
                                 )})
