@@ -3,11 +3,11 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-
+import { Link } from 'react-router-dom'
 
 
 class NavBar extends Component {
-    render() {
+    render(){
         return (
             <>
                 <AppBar position="static">
@@ -15,7 +15,9 @@ class NavBar extends Component {
                         <Typography variant="h6" >
                             CRUD
                         </Typography>
-                        <Button to='/' color="inherit">Admin</Button>
+                        <Button color="inherit" >
+                            <Link style={{ textDecoration: 'none' }} to="/">Admin</Link>
+                        </Button>
                         <Button  color="inherit">Ofertas</Button>
                     </Toolbar>
                 </AppBar>

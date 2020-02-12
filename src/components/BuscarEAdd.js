@@ -4,13 +4,12 @@ import '../../src/App.css'
 import {Link} from 'react-router-dom';
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
+
 const style = {
     marginTop: 7,
     marginLeft: 5,
-    
-    
-
 }
+
 function BuscarEAdd() {    
         return(
            <div>
@@ -21,10 +20,8 @@ function BuscarEAdd() {
                                 <Link to="Cadastro" style={{color: "inherit", textDecoration: 'none' }}>
                                     Cadastrar
                                 </Link>
-                            </Button>
-                             
-                        </Grid>    
-                                  
+                            </Button>     
+                        </Grid>                            
                     </Grid>          
                 </Paper>
            </div>

@@ -56,6 +56,9 @@ function Tabela(key, marca, modelo, data) {
                                         <TableCell  size="medium" align="center" key={item.marca}>{item.marca}</TableCell>
                                         <TableCell  size="medium" align="center" key={item.modelo}>{item.modelo}</TableCell>
                                         <TableCell  size="medium" align="center" key={item.data}>{item.data}</TableCell>
+                                        <TableCell  size="medium" align="center" >
+                                            
+                                        </TableCell>
                                     </TableRow>
                                 )})
                             } 
