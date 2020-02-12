@@ -58,8 +58,7 @@ function Tabela(key, marca, modelo, data) {
                                         <TableCell  size="medium" align="center" key={item.data}>{item.data}</TableCell>
                                     </TableRow>
                                 )})
-                            }
-                        
+                            } 
                     </TableBody>
                 </Table>
             </Grid>    

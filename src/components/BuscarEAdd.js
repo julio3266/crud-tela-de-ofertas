@@ -14,7 +14,7 @@ const style = {
 function BuscarEAdd() {    
         return(
            <div>
-               <Paper elevation={5}  >
+               <Paper elevation={5} style={{paddingBottom: 10}}  >
                     <Grid style={style} container  >    
                         <Grid item={4}>
                            <Button variant="contained" syze="large" color="primary" style={style}>
