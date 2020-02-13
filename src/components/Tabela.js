@@ -1,18 +1,11 @@
 import React, {useState, useEffect} from 'react'
-import '../../src/App.css'
-import Grid from '@material-ui/core/Grid'
-import Paper from '@material-ui/core/Paper'
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
+import{TableBody, TableHead, TableCell, TableRow, IconButton, Grid, Paper, Table, TextField } from '@material-ui/core';
 import firebase from '../Config/firebase'
-import TextField from '@material-ui/core/TextField'
-import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import { Redirect } from 'react-router-dom';
+import '../../src/App.css'
+
 
 function Tabela(key, marca, modelo, data) {
     const [buscar, setBuscar] = useState('');

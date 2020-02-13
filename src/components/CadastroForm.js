@@ -1,13 +1,9 @@
 import React, { useState } from 'react'
 import firebase from '../Config/firebase'
 import { Link } from 'react-router-dom'
-import TextField from '@material-ui/core/TextField'
-import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import {TextField, Grid, Typography, Button, Paper} from '@material-ui/core'
 import SaveIcon from '@material-ui/icons/Save';
 import DeleteIcon from '@material-ui/icons/Delete';
-import Paper from '@material-ui/core/Paper';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
 const style ={

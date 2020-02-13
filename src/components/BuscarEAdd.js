@@ -1,9 +1,8 @@
 import React from 'react'
-import Grid from '@material-ui/core/Grid'
-import '../../src/App.css'
+import {Grid, Paper, Button} from '@material-ui/core'
 import {Link} from 'react-router-dom';
-import Paper from '@material-ui/core/Paper'
-import Button from '@material-ui/core/Button'
+import '../../src/App.css'
+
 
 const style = {
     marginTop: 7,
