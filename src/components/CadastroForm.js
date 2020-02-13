@@ -30,7 +30,7 @@ function CadastroForm() {
             marca: marca,
             modelo: modelo,
             data: data
-        });
+        })
     }
         return(
             <div>
