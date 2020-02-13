@@ -19,13 +19,15 @@ function Tabela(key, marca, modelo, data) {
     const [ofertas, setOfertas] = useState([]);
     const [excluir, setExcluir] = useState(0);
     const listaofertas = []
-   
+
+    
     function remover(){
-        firebase.firestore().collection('ofertas').delete().then(() =>{
+        firebase.firestore().collection('ofertas').doc().delete().then(() =>{
             setExcluir(1);
         })
     }
     useEffect(()=>{
+        
         firebase.firestore().collection('ofertas').get().then(async (resultado) => {
             await resultado.docs.forEach(doc => {
                 if(doc.data().modelo.indexOf(buscar) >= 0)
