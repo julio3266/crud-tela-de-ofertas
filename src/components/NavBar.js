@@ -10,7 +10,7 @@ class NavBar extends Component {
     render(){
         return (
             <>
-                <AppBar position="static">
+                <AppBar  position="static">
                     <Toolbar>
                         <Typography variant="h6" >
                             CRUD

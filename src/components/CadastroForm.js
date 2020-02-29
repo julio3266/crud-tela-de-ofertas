@@ -31,10 +31,9 @@ function CadastroForm() {
         return(
             <div>
                  <Paper  elevation={3}>
-                    <Typography style={{ marginTop: 30 }}  align="center" color="primary" variant="h3" gutterBottom>Cadastro</Typography>
+                    <Typography style={{ marginTop: 30,  }}  align="center" color="primary" variant="h3" gutterBottom>Cadastro</Typography>
                     
                                 <Grid   direction="column"
-                                        justify="flex-start"
                                         alignItems="center"
                                         container
                                         style={{ marginTop: 70 }} >
