@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import{TableBody, TableHead, TableCell, TableRow, IconButton, Grid, Paper, Table, TextField } from '@material-ui/core';
+import{TableBody, TableHead, TableCell, TableRow, IconButton, Grid, Paper, Table, TextField, Button } from '@material-ui/core';
 import firebase from '../Config/firebase'
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
@@ -64,14 +64,13 @@ function Tabela(key, marca, modelo, data) {
                                         <TableCell  size="medium" align="center" key={item.data}>{item.data}</TableCell>
                                         <TableCell  size="medium" align="center" >
                                            
-                                            <IconButton onClick={remover} aria-label="delete" >
-                                                <Link >
-                                                    <DeleteIcon fontSize="small" />
-                                                </Link>
+                                            <IconButton aria-label="delete" >
+                                                    <DeleteIcon fontsize="medium" />
                                             </IconButton>
                                             <IconButton>
-                                                <EditIcon fontSize="small" />
+                                                <EditIcon fontsize="medium" />
                                             </IconButton>
+                                            
                                         </TableCell>
                                     </TableRow>
                                 )})

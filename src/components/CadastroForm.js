@@ -20,6 +20,7 @@ function CadastroForm() {
     const [marca, setMarca] = useState();
     const [modelo, setModelo] = useState();
     const [data, setData] = useState();
+    const [img, setImg] = useState();
     
     function cadastrar() {
         db.collection('ofertas').add({
@@ -36,7 +37,7 @@ function CadastroForm() {
                                 <Grid   direction="column"
                                         alignItems="center"
                                         container
-                                        style={{ marginTop: 70 }} >
+                                        style={{ marginTop: 70, marginLeft: 20 }} >
                                 <Grid md item={12}>
                                     <form    noValidate autoComplete="off">
                                         <TextField style={style} variant="outlined" onChange={(e) =>setMarca(e.target.value)} label="Marca" />
@@ -63,9 +64,11 @@ function CadastroForm() {
                                         style={{ marginBottom: 20, }}
                                             variant="contained"
                                             color="default"
-                                            startIcon={<CloudUploadIcon />}
                                          >
-                                            Upload
+                                            Upload 
+                                            <input
+                                            type="file"
+                                        />
                                         </Button>        
                                    
                                 </Grid>
