@@ -14,7 +14,7 @@ function Tabela(key, marca, modelo, data) {
     const listaofertas = []
     
     function remover(id){
-        firebase.firestore().collection('ofertas').doc(id).delete().then(() =>{
+        firebase.firestore().collection('ofertas').doc().delete().then(() =>{
             setExcluir(1);
         })
     }
@@ -48,10 +48,10 @@ function Tabela(key, marca, modelo, data) {
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell  size="medium" align="center">Marca</TableCell>
-                            <TableCell  size="medium" align="center">Modelo</TableCell>
-                            <TableCell  size="medium" align="center">Data de criação</TableCell>
-                            <TableCell  size="medium" align="center">Ações</TableCell>
+                            <TableCell  size="small" align="center">Marca</TableCell>
+                            <TableCell  size="small" align="center">Modelo</TableCell>
+                            <TableCell  size="small" align="center">Data de criação</TableCell>
+                            <TableCell  size="small" align="center">Ações</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -59,16 +59,16 @@ function Tabela(key, marca, modelo, data) {
                                 ofertas.map(item => 
                                 {  return( 
                                     <TableRow>
-                                        <TableCell  size="medium" align="center" key={item.marca}>{item.marca}</TableCell>
-                                        <TableCell  size="medium" align="center" key={item.modelo}>{item.modelo}</TableCell>
-                                        <TableCell  size="medium" align="center" key={item.data}>{item.data}</TableCell>
+                                        <TableCell  size="small" align="center" key={item.marca}>{item.marca}</TableCell>
+                                        <TableCell  size="small" align="center" key={item.modelo}>{item.modelo}</TableCell>
+                                        <TableCell  size="small" align="center" key={item.data}>{item.data}</TableCell>
                                         <TableCell  size="medium" align="center" >
                                            
                                             <IconButton aria-label="delete" >
-                                                    <DeleteIcon fontsize="medium" />
+                                                    <DeleteIcon fontSize="small" />
                                             </IconButton>
                                             <IconButton>
-                                                <EditIcon fontsize="medium" />
+                                                <EditIcon fontSize="small" />
                                             </IconButton>
                                             
                                         </TableCell>

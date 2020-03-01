@@ -13,22 +13,36 @@ const style ={
     textAlign: 'center',
     display: 'inline-block',    
 }
-
+const storage = firebase.storage();
 const db = firebase.firestore();
 
 function CadastroForm() {
+    const [msgTipo, setMsgTipo] = useState();
     const [marca, setMarca] = useState();
     const [modelo, setModelo] = useState();
     const [data, setData] = useState();
     const [img, setImg] = useState();
+    const [criacao, setCriacao] = useState();
+    
+   
     
     function cadastrar() {
-        db.collection('ofertas').add({
-            marca: marca,
-            modelo: modelo,
-            data: data
-        })
-    }
+        storage.ref( `img/${img.name}`).put(img).then(() => {
+            db.collection('ofertas').add ({
+                marca: marca,
+                modelo: modelo,
+                data: data,
+                criacao: new Date(),
+                img: img.name
+            }).then(() => {
+                setMsgTipo('sucesso');
+            }).catch(erro => {
+                setMsgTipo('erro');
+            })
+    });
+}
+
+    
         return(
             <div>
                  <Paper  elevation={3}>
@@ -37,7 +51,7 @@ function CadastroForm() {
                                 <Grid   direction="column"
                                         alignItems="center"
                                         container
-                                        style={{ marginTop: 70, marginLeft: 20 }} >
+                                        style={{ marginTop: 100, marginLeft: 20 }} >
                                 <Grid md item={12}>
                                     <form    noValidate autoComplete="off">
                                         <TextField style={style} variant="outlined" onChange={(e) =>setMarca(e.target.value)} label="Marca" />
@@ -61,6 +75,7 @@ function CadastroForm() {
                                 </Grid>
                                 <Grid md item={12}>
                                         <Button
+                                        onChange={ (e) => setImg(e.target.files[0]) }
                                         style={{ marginBottom: 20, }}
                                             variant="contained"
                                             color="default"
