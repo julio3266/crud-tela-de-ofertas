@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import {TextField, Grid, Typography, Button, Paper} from '@material-ui/core'
 import SaveIcon from '@material-ui/icons/Save';
 import DeleteIcon from '@material-ui/icons/Delete';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+
 
 const style ={
     height: 90,
@@ -17,7 +17,6 @@ const storage = firebase.storage();
 const db = firebase.firestore();
 
 function CadastroForm() {
-    const [msgTipo, setMsgTipo] = useState();
     const [marca, setMarca] = useState();
     const [modelo, setModelo] = useState();
     const [data, setData] = useState();
@@ -27,19 +26,11 @@ function CadastroForm() {
    
     
     function cadastrar() {
-        storage.ref( `img/${img.name}`).put(img).then(() => {
             db.collection('ofertas').add ({
                 marca: marca,
                 modelo: modelo,
-                data: data,
-                criacao: new Date(),
-                img: img.name
-            }).then(() => {
-                setMsgTipo('sucesso');
-            }).catch(erro => {
-                setMsgTipo('erro');
-            })
-    });
+                data: data
+            });
 }
 
     
@@ -75,13 +66,13 @@ function CadastroForm() {
                                 </Grid>
                                 <Grid md item={12}>
                                         <Button
-                                        onChange={ (e) => setImg(e.target.files[0]) }
                                         style={{ marginBottom: 20, }}
                                             variant="contained"
                                             color="default"
                                          >
                                             Upload 
                                             <input
+                                             onChange={ (e) => setImg(e.target.files[0]) }
                                             type="file"
                                         />
                                         </Button>        

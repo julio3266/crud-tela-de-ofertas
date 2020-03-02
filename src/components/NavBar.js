@@ -18,7 +18,9 @@ class NavBar extends Component {
                         <Button color="inherit" >
                             <Link style={{ textDecoration: 'none', color: "inherit" }} to="/">Admin</Link>
                         </Button>
-                        <Button  color="inherit">Ofertas</Button>
+                        <Button  color="inherit">
+                            <Link to="/ofertas" style={{ textDecoration: 'none', color: "inherit" }}>Ofertas</Link>
+                        </Button>
                     </Toolbar>
                 </AppBar>
             </>

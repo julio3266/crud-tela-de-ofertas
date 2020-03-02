@@ -4,11 +4,13 @@ import Home from './Pages/Home'
 import NotFound from './Pages/NotFound'
 import Cadastro from './Pages/Cadastro'
 import Login from './Pages/Login'
+import Ofertas from './Pages/Ofertas'
 class Routes extends Component {
     render(){
         return (         
                 <Switch>
                     <Route  exact path='/' component={Home} />
+                    <Route exact path='/ofertas' component={Ofertas} />
                     <Route exact path='/EditarProduto' component={Home} />
                     <Route exact path='/login' component={Login} />
                     <Route exact path='/Cadastro' component={Cadastro} />
