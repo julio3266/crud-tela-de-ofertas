@@ -32,8 +32,6 @@ function CadastroForm() {
                 data: data
             });
 }
-
-    
         return(
             <div>
                  <Paper  elevation={3}>
