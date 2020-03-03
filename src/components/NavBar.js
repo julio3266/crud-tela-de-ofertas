@@ -16,10 +16,10 @@ class NavBar extends Component {
                             CRUD
                         </Typography>
                         <Button color="inherit" >
-                            <Link style={{ textDecoration: 'none', color: "inherit" }} to="/Login">Login</Link>
+                            <Link style={{ textDecoration: 'none', color: "inherit" }} to="/">Login</Link>
                         </Button>
                         <Button color="inherit" >
-                            <Link style={{ textDecoration: 'none', color: "inherit" }} to="/">Admin</Link>
+                            <Link style={{ textDecoration: 'none', color: "inherit" }} to="/Admin">Admin</Link>
                         </Button>
                         <Button  color="inherit">
                             <Link to="/ofertas" style={{ textDecoration: 'none', color: "inherit" }}>Ofertas</Link>

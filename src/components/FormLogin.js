@@ -1,17 +1,21 @@
 import React, {useState} from 'react';
 import{ Grid, TextField, Button, Typography} from '@material-ui/core';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import CustomFormLogin from '../Custon/CustomFormLogin.css';
+import {useSelector, useDispatch} from 'react-redux'
 import firebase from '../Config/firebase';
 import 'firebase/auth';
+
 export default function FormLogin(props){
     const [email, setEmail] = useState();
     const [senha, setSenha] = useState();
     const [msgTipo, setMsgTipo] = useState();
+    const dispatch = useDispatch();
     function logar(){
         firebase.auth().signInWithEmailAndPassword(email, senha).then(resultado => {
             //Sucess
             setMsgTipo('sucesso');
+            dispatch({type: "LOG_IN", usuarioEmail: email})
         }).catch(erro => {
             setMsgTipo('erro');
         });
@@ -26,6 +30,9 @@ export default function FormLogin(props){
          justify="center"
          style={{ minHeight: '100vh'  }}
         >
+            
+                {useSelector(state => state.usuarioLogado) > 0 ? <Redirect to='/Admin' /> : null}
+            
             <Grid item xs={7}>
                     <TextField 
                     onChange={(e) => setEmail(e.target.value)}
