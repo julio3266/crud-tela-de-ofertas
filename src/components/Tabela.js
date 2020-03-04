@@ -7,7 +7,7 @@ import { Redirect, Link } from 'react-router-dom';
 import '../../src/App.css'
 
 
-function Tabela(key, marca, modelo, data) {
+function Tabela({key, marca, modelo, data}) {
     const [buscar, setBuscar] = useState('');
     const [ofertas, setOfertas] = useState([]);
     const [excluir, setExcluir] = useState(0);

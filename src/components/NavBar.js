@@ -6,29 +6,24 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom'
 
 
-class NavBar extends Component {
-    render(){
+export default function NavBar(){
         return (
-            <>
                 <AppBar   position="static">
                     <Toolbar>
                         <Typography style={{ flexGrow: 1 }} variant="h6" >
                             CRUD
                         </Typography>
                         <Button color="inherit" >
-                            <Link style={{ textDecoration: 'none', color: "inherit" }} to="/">Login</Link>
-                        </Button>
-                        <Button color="inherit" >
                             <Link style={{ textDecoration: 'none', color: "inherit" }} to="/Admin">Admin</Link>
                         </Button>
                         <Button  color="inherit">
                             <Link to="/ofertas" style={{ textDecoration: 'none', color: "inherit" }}>Ofertas</Link>
                         </Button>
+                        <Button    color="inherit">
+                            <Link  to='/' style={{ textDecoration: 'none', color: "inherit" }}>Sair</Link>
+                        </Button>
                     </Toolbar>
                 </AppBar>
-            </>
         )
     }
-}
 
-export default NavBar

@@ -13,24 +13,40 @@ const style ={
     textAlign: 'center',
     display: 'inline-block',    
 }
-const storage = firebase.storage();
-const db = firebase.firestore();
 
-function CadastroForm() {
+export default function CadastroForm() {
     const [marca, setMarca] = useState();
     const [modelo, setModelo] = useState();
     const [data, setData] = useState();
     const [img, setImg] = useState();
     const [criacao, setCriacao] = useState();
-    
+    const [msgTipo, setMsgTipo] = useState();
+    const [carregando, setCarregando] = useState();
+    const [fotoAtual, setFotoAtual] = useState();    
+    const [fotoNova, setFotoNova] = useState();
+    const storage = firebase.storage();
+    const db = firebase.firestore();
    
+     
     
     function cadastrar() {
-            db.collection('ofertas').add ({
+        setMsgTipo(null);
+        setCarregando(1);
+          
+        storage.ref(`imagens/${fotoNova.name}`).put(fotoNova).then(() => {
+            db.collection('ofertas').add({
+                data: data,
                 marca: marca,
                 modelo: modelo,
-                data: data
-            });
+                foto: fotoNova.name
+            }).then(() => {
+                setMsgTipo('sucesso');
+                setCarregando(0);
+            }).catch(erro => {
+                setMsgTipo('erro');
+                setCarregando(0);
+        });
+    });
 }
         return(
             <div>
@@ -68,9 +84,9 @@ function CadastroForm() {
                                             variant="contained"
                                             color="default"
                                          >
-                                            Upload 
+                                            
                                             <input
-                                             onChange={ (e) => setImg(e.target.files[0]) }
+                                            onChange={(e) => setFotoNova(e.target.files[0]) }
                                             type="file"
                                         />
                                         </Button>        
@@ -101,5 +117,3 @@ function CadastroForm() {
                 </div>           
         )
     }
-
-export default CadastroForm
