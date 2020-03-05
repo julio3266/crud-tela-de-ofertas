@@ -1,29 +1,15 @@
 import React, {useState, useEffect} from 'react'
-import { Grid, Typography, Card, CardHeader, CardContent, CardActionArea, CardMedia} from '@material-ui/core'
+import { Grid, Typography, Card, CardContent, CardActionArea, CardMedia} from '@material-ui/core'
 import firebase from '../Config/firebase'
 
-export default function ExibeOferta(key, marca, modelo, data){
-    const [buscar, setBuscar] = useState('');
-  const [ofertas, setOfertas] = useState([]);
-  const listaofertas = [];
-  useEffect(()=>{
-      
-      firebase.firestore().collection('ofertas').get().then(async (resultado) => {
-          await resultado.docs.forEach(doc => {
-              if(doc.data().modelo.indexOf(buscar) >= 0)
-              {
-              listaofertas.push({
-                  id: doc.id,
-                  ...doc.data()
-              })
-            }
-          })
-          setOfertas(listaofertas);
-      })
-  })
-    return(
-<div>
+export default function ExibeOferta({key, marca,img, modelo, data}){
+    const [urlImagem, setUrlImagem] = useState();
     
+    useEffect(() => {
+        firebase.storage().ref(`imagens/${img}`).getDownloadURL().then(url => setUrlImagem(url));
+    }, [urlImagem]);
+    
+    return(
         <Grid 
         spacing={1}
         style={{ marginTop: 80 }}
@@ -32,36 +18,30 @@ export default function ExibeOferta(key, marca, modelo, data){
         justify="space-evenly"
         alignItems="baseline"
         > 
-       {
-        ofertas.map(item => 
-            <Grid item sm={3}>
-                <Card>
-                   <CardActionArea>
-                        <CardMedia
-                            component="img"
-                            image="https://via.placeholder.com/100x50"
-                            title="Onix Joy"        
-                        />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">
-                                Modelo 1
-                            </Typography>
-                            <Typography variant="body2" color="textSecondary" component="p">
-                                Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                across all continents except Antarctica
-                            </Typography>
-                            
-                        </CardContent>
-                   </CardActionArea>
-               </Card>
-            </Grid>
-                )}
-            
-          
+                <Grid item sm={3}>
+                    <Card>
+                        <CardActionArea>
+                                <CardMedia
+                                component="img"
+                                image={urlImagem}
+                                title="Onix Joy"        
+                                />
+                                <CardContent>
+                                    <Typography gutterBottom variant="h5" component="h2">
+                                {marca}, {modelo}
+                                    </Typography>
+                                    <Typography  variant="body2" color="textSecondary" component="p">
+                                        {data}
+                                    </Typography>
+                                    
+                                </CardContent>
+                        </CardActionArea>
+                    </Card>
+                </Grid>
+                
          
         
             </Grid>
-        
-            </div>
+            
     )
 }

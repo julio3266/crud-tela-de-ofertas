@@ -56,7 +56,7 @@ export default function CadastroForm() {
                                 <Grid   direction="column"
                                         alignItems="center"
                                         container
-                                        style={{ marginTop: 100, marginLeft: 20 }} >
+                                        style={{ marginTop: 100 }} >
                                 <Grid md item={12}>
                                     <form    noValidate autoComplete="off">
                                         <TextField style={style} variant="outlined" onChange={(e) =>setMarca(e.target.value)} label="Marca" />

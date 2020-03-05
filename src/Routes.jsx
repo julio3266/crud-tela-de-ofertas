@@ -18,7 +18,6 @@ class Routes extends Component {
                         <Route exact path='/UserCadastro' component={UserCadastro} />
                         <Route exact path='/Cadastro' component={Cadastro} />
                         <Route exact path='/ofertas' component={Ofertas} />
-                        
                     </Provider>
                 </Switch>     
         )
