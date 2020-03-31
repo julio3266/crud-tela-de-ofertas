@@ -1,0 +1,24 @@
+
+
+.box-info{
+    background-color: #614ea6;
+    color: #fff;
+    display: flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+
+}
+
+.btn-editar i{
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    transition: .3s ease-in;
+}
+
+
+
+.titulo, .visualiacoes{
+    color: #614ea6;
+}
